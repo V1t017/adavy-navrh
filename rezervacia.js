@@ -95,7 +95,7 @@
       '<div class="row"><span>Upratovanie</span><span id="s-clean">—</span></div>' +
       '<div class="row"><span>Daň z ubytovania</span><span id="s-tax">—</span></div>' +
       '<div class="row tot"><span>Spolu</span><span id="s-tot">—</span></div>' +
-      '<a href="/kontakt/" class="btn btn-primary" id="cta">Vyberte termín</a>' +
+      '<a href="../kontakt/" class="btn btn-primary" id="cta">Vyberte termín</a>' +
       '<div class="hint">Nezáväzná rezervácia · potvrdenie do 12 hodín<br>Platba prevodom, záloha 30 %</div>' +
     '</div>';
 

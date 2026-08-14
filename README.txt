@@ -9,18 +9,19 @@ ADAVY — návrh webu (5 stránok)
   /kontakt/ ..................... formulár + adresy
   /style.css .................... spoločné štýly
   /rezervacia.js ................ rezervačný widget
+  /menu.js ...................... mobilné menu (hamburger)
 
 NASADENIE (Cloudflare Pages)
   1. Rozbaľ ZIP
   2. Cloudflare → Workers & Pages → Create → Pages → Upload assets
   3. Nahraj CELÝ priečinok (nie jednotlivé súbory)
   4. Custom domains → adavy.qvinz.sk
-  Odkazy sú absolútne (/chata-liptovsky-jan/), takže fungujú len
-  z koreňa domény alebo subdomény, nie z podpriečinka.
+  Odkazy sú relatívne, takže web funguje z koreňa domény,
+  z podpriečinka (GitHub Pages) aj po dvojkliku z disku.
 
 PRED ODOSLANÍM MAJITEĽOVI
-  [ ] V každom index.html nahraď [tvoj telefón] a [tvoj e-mail]
-      (blok <div class="draftbar">, hneď za <body>)
+  [x] Kontakt v pracovnej lište doplnený
+      0917 508 549 · adam.vitalis2016@gmail.com
 
 PRED SPUSTENÍM OSTREJ VERZIE
   [ ] Zmaž <div class="draftbar"> zo všetkých 5 stránok
