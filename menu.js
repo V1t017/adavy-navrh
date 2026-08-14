@@ -1,55 +1,38 @@
 /* ==========================================================
-   ADAVY — mobilné menu
-   Ovláda hamburger v hlavičke. Na desktope je tlačidlo skryté
-   cez CSS a zoznam odkazov sa zobrazuje normálne.
+   ADAVY — doplnok k mobilnému menu
+   Menu funguje aj BEZ tohto súboru (je postavené na CSS).
+   Toto pridáva len drobnosti: zatvorenie po kliknutí na odkaz,
+   klikom mimo menu a klávesou Esc.
    ========================================================== */
 (function () {
   "use strict";
 
-  var btn = document.getElementById("navToggle");
+  var chk = document.getElementById("navtoggle");
   var list = document.getElementById("navLinks");
-  if (!btn || !list) { return; }
+  if (!chk || !list) { return; }
 
-  function close() {
-    list.classList.remove("open");
-    btn.classList.remove("is-open");
-    btn.setAttribute("aria-expanded", "false");
-    btn.setAttribute("aria-label", "Otvoriť menu");
-  }
+  function close() { chk.checked = false; }
 
-  function open() {
-    list.classList.add("open");
-    btn.classList.add("is-open");
-    btn.setAttribute("aria-expanded", "true");
-    btn.setAttribute("aria-label", "Zavrieť menu");
-  }
-
-  btn.addEventListener("click", function (e) {
-    e.stopPropagation();
-    if (list.classList.contains("open")) { close(); } else { open(); }
-  });
-
-  /* klik na odkaz menu zavrie */
+  /* klik na odkaz v menu ho zavrie (dôležité pri kotvách na tej istej stránke) */
   Array.prototype.forEach.call(list.querySelectorAll("a"), function (a) {
     a.addEventListener("click", close);
   });
 
-  /* klik mimo menu zavrie */
+  /* klik mimo menu ho zavrie */
   document.addEventListener("click", function (e) {
-    if (!list.classList.contains("open")) { return; }
-    if (!list.contains(e.target) && e.target !== btn) { close(); }
+    if (!chk.checked) { return; }
+    if (list.contains(e.target)) { return; }
+    if (e.target.closest && e.target.closest(".nav-toggle")) { return; }
+    close();
   });
 
-  /* Esc zavrie a vráti fokus na tlačidlo */
+  /* Esc zavrie */
   document.addEventListener("keydown", function (e) {
-    if ((e.key === "Escape" || e.keyCode === 27) && list.classList.contains("open")) {
-      close();
-      btn.focus();
-    }
+    if (e.key === "Escape" || e.keyCode === 27) { close(); }
   });
 
   /* po zväčšení okna nad breakpoint upratať stav */
   window.addEventListener("resize", function () {
-    if (window.innerWidth > 980 && list.classList.contains("open")) { close(); }
+    if (window.innerWidth > 980) { close(); }
   });
 })();
